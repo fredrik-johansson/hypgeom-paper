@@ -1,77 +1,57 @@
-\documentclass[review,nohypdvips]{siamart0216}
+%\documentclass[review,nohypdvips]{siamart0216}
 
-%\documentclass[10pt]{article}
-%\usepackage{amsmath}
-%\usepackage{cleveref}
-%\usepackage{url}
-%\usepackage{amsthm}
-%\usepackage{graphicx}
-%\newtheorem{example}{Example}
-%\newtheorem{theorem}{Theorem}
-%\usepackage[margin=1.1in]{geometry}
+\documentclass[11pt]{article}
 
-
-%\usepackage{cleveref}
-
-%\usepackage{amsmath}
+\usepackage{amsmath}
 \usepackage{amssymb}
+%\usepackage{cleveref}
+\usepackage{url}
+\usepackage{hyperref}
+
+\usepackage{graphicx}
+\usepackage[margin=1.3in]{geometry}
 
 %\usepackage{listings}
 %\usepackage{float}
 %\usepackage{url}
-%\usepackage[pdfauthor={Fredrik Johansson},pdftitle={Hypergeometric functions in arbitrary-precision complex interval arithmetic}]{hyperref}
-%\usepackage{breakurl}
+\usepackage{breakurl}
 %\usepackage{tikz,tabularx}
 %\usepackage[margin=0.9in]{geometry}
 %\usepackage{upgreek}
 %\usepackage{textgreek}
 
-%\providecommand{\keywords}[1]{\textbf{\textit{Keywords---}} #1}
+% copied from SIAM
+\RequirePackage[capitalize]{cleveref}[0.19]
+\crefname{section}{section}{sections}
+\crefname{subsection}{subsection}{subsections}
+\Crefname{figure}{Figure}{Figures}
+\crefformat{equation}{\textup{#2(#1)#3}}
+\crefrangeformat{equation}{\textup{#3(#1)#4--#5(#2)#6}}
+\crefmultiformat{equation}{\textup{#2(#1)#3}}{ and \textup{#2(#1)#3}}
+{, \textup{#2(#1)#3}}{, and \textup{#2(#1)#3}}
+\crefrangemultiformat{equation}{\textup{#3(#1)#4--#5(#2)#6}}%
+{ and \textup{#3(#1)#4--#5(#2)#6}}{, \textup{#3(#1)#4--#5(#2)#6}}{, and \textup{#3(#1)#4--#5(#2)#6}}
+\Crefformat{equation}{#2Equation~\textup{(#1)}#3}
+\Crefrangeformat{equation}{Equations~\textup{#3(#1)#4--#5(#2)#6}}
+\Crefmultiformat{equation}{Equations~\textup{#2(#1)#3}}{ and \textup{#2(#1)#3}}
+{, \textup{#2(#1)#3}}{, and \textup{#2(#1)#3}}
+\Crefrangemultiformat{equation}{Equations~\textup{#3(#1)#4--#5(#2)#6}}%
+{ and \textup{#3(#1)#4--#5(#2)#6}}{, \textup{#3(#1)#4--#5(#2)#6}}{, and \textup{#3(#1)#4--#5(#2)#6}}
+\crefdefaultlabelformat{#2\textup{#1}#3}
 
-%\newcommand{\software}[1]{\textsf{#1}}
-%\newcommand{\software}[1]{#1}
-
-% SIAM
-% Declare title and authors, without \thanks
-%\newcommand{\TheTitle}{An Example Article} 
-%\newcommand{\TheAuthors}{D. Doe, P. T. Frank, and J. E. Smith}
-% Sets running headers as well as PDF title and authors
-%\headers{\TheTitle}{\TheAuthors}
-% Title. If the supplement option is on, then "Supplementary Material"
-% is automatically inserted before the title.
-%\title{{\TheTitle}\thanks{This work was funded by the Fog Research Institute under contract no.~FRI-454.}}
-% Authors: full names plus addresses.
-%\author{
-%  Dianne Doe\thanks{Imagination Corp., Chicago, IL
-%    (\email{ddoe@imag.com}, \url{http://www.imag.com/\string~ddoe/}).}
-%  \and
-%  Paul T. Frank\thanks{Department of Applied Mathematics, Fictional
-%    University, Boise, ID (\email{ptfrank@fictional.edu},
-%    \email{jesmith@fictional.edu}).}
-%  \and
-%  Jane E. Smith\footnotemark[3]
-%}
-
-
-%\usepackage{amsthm}
-%\newtheorem{example}{Example}
-%\newtheorem{theorem}{Theorem}
-%\newtheorem{lemma}[theorem]{Lemma}
-%\newtheorem{remark}[theorem]{Remark}
-%\newtheorem{proposition}[theorem]{Proposition}
-%\newtheorem{corollary}[theorem]{Corollary}
-%\newtheorem{definition}[theorem]{Definition}
-%\newtheorem{conjecture}[theorem]{Conjecture}
-%\newtheorem{inequality}[theorem]{Inequality}
-%\newtheorem{axiom}[theorem]{Axiom}
-%\newtheorem{problem}[theorem]{Problem}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}
 
 \begin{document}
 
 \title{Computing hypergeometric functions rigorously}
-%\author{Fredrik Johansson\footnote{LFANT, INRIA Bordeaux-Sud-Ouest / Institut de Math\'{e}matiques de Bordeaux. \protect\url{fredrik.johansson@gmail.com}}}
-\author{Fredrik Johansson\thanks{LFANT, INRIA and Institut de Math\'{e}matiques de Bordeaux
-  (\protect\email{fredrik.johansson@gmail.com}}). This research was partially funded by ERC Starting Grant ANTICS 278537.}
+
+%\author{Fredrik Johansson\thanks{LFANT, INRIA and Institut de Math\'{e}matiques de Bordeaux
+%  (\protect\url{fredrik.johansson@gmail.com}}). }
+
+\author{Fredrik Johansson\footnote{LFANT, INRIA and Institut de Math\'{e}matiques de Bordeaux (\protect\url{fredrik.johansson@gmail.com}).
+  This research was partially funded by ERC Starting Grant ANTICS 278537.}}
+
 \date{}
 
 \maketitle
@@ -96,26 +76,26 @@ We also partially cover the generalized hypergeometric function~${}_pF_q$
 and computation of high-order parameter derivatives.
 \end{abstract}
 
-\begin{keywords}
-hypergeometric functions, interval arithmetic, arbitrary-precision arithmetic, Bessel functions, orthogonal polynomials, automatic differentiation
-\end{keywords}
+%\begin{keywords}
+%hypergeometric functions, interval arithmetic, arbitrary-precision arithmetic, Bessel functions, orthogonal polynomials, automatic differentiation
+%\end{keywords}
 
-\begin{AMS}
- 33F05, % Special functions: Numerical approximation and evaluation
- 33C20, % Generalized hypergeometric series, pFq
- 33C05, % Classical hypergeometric functions 2F1
- 33C10, % Bessel and Airy, cylinder functions, 0F1
- 33C15, % Confluent hypergeometric functions, Whittaker functions, 1F1
- 65G30, % Interval and finite arithmetic
- 65Y20, % Complexity and performance of numerical algorithms
- 65D20, % Computation of special functions, construction of tables
- 97N80, % Mathematical software, computer programs
- 33B15, % Gamma, beta and polygamma functions
- 33B20, % Incomplete beta and gamma functions (error functions, probability integral, Fresnel integrals)
- 33C45 % Orthogonal polynomials
- %33C55, % Spherical harmonics
- %33C75  % Elliptic integrals as hypergeometric functions
-\end{AMS}
+%\begin{AMS}
+% 33F05, % Special functions: Numerical approximation and evaluation
+% 33C20, % Generalized hypergeometric series, pFq
+% 33C05, % Classical hypergeometric functions 2F1
+% 33C10, % Bessel and Airy, cylinder functions, 0F1
+% 33C15, % Confluent hypergeometric functions, Whittaker functions, 1F1
+% 65G30, % Interval and finite arithmetic
+% 65Y20, % Complexity and performance of numerical algorithms
+% 65D20, % Computation of special functions, construction of tables
+% 97N80, % Mathematical software, computer programs
+% 33B15, % Gamma, beta and polygamma functions
+% 33B20, % Incomplete beta and gamma functions (error functions, probability integral, Fresnel integrals)
+% 33C45 % Orthogonal polynomials
+% %33C55, % Spherical harmonics
+% %33C75  % Elliptic integrals as hypergeometric functions
+%\end{AMS}
 
 \section{Introduction}
 Naive numerical methods for evaluating special functions are prone
@@ -189,7 +169,7 @@ or the
 \end{equation}
 where $a_i$ and $b_i$ are called (upper and lower) parameters, and
 $z$ is called the argument
-(see \cite[Chapter~16]{NIST:DLMF} and \cite{wolf}). Both \cref{eq:pfq} and \cref{eq:regpfq}
+(see \cite[Chapter~16]{NIST:DLMF} and \cite{wolf}). Both \eqref{eq:pfq} and \eqref{eq:regpfq}
 are solutions of the linear ODE
 \begin{equation}
 \left[z\prod_{n=1}^{p}\left(z\frac{d}{dz} + a_n\right) - z\frac{d}{dz}\prod_{n=1}^{q}\left(z\frac{d}{dz} + b_n-1\right) \right] f(z) = 0.
@@ -199,7 +179,7 @@ are solutions of the linear ODE
 \subsection{Analytic interpretation}
 
 Some clarification is needed to interpret the formal
-sums \cref{eq:pfq} and \cref{eq:regpfq} as analytic functions.
+sums \eqref{eq:pfq} and \eqref{eq:regpfq} as analytic functions.
 If any $a_i \in \mathbb{Z}_{\le 0}$,
 the series terminates as ${}_pF_q = \sum_{k=0}^{-a_i} T(k)$, a
 polynomial in~$z$ and a rational function of the other parameters.
@@ -209,7 +189,7 @@ unless some $a_i \in \mathbb{Z}_{\le 0}$ with $a_i > b_j$ in which case
 it is conventional to use the truncated series.
 
 If some $a_i = b_j \in \mathbb{Z}_{\le 0}$ and the series does
-not terminate earlier, \cref{eq:pfq} is ambiguous. One
+not terminate earlier, \eqref{eq:pfq} is ambiguous. One
 possible interpretation
 is that we can cancel $a_i$ against~$b_j$ to get a
 generalized hypergeometric function of order $(p-1, q-1)$.
@@ -224,7 +204,7 @@ and with explicitly truncated hypergeometric series
 when needed.
 
 With generic values of the parameters,
-the rate of convergence of the series~\cref{eq:pfq} or \cref{eq:regpfq} depends on the sign of $p - q + 1$,
+the rate of convergence of the series~\eqref{eq:pfq} or \eqref{eq:regpfq} depends on the sign of $p - q + 1$,
 giving three distinct cases.
 
 Case $p \le q$: the series converges for any $z$
@@ -262,7 +242,7 @@ associated to an analytic function of $z$.
 
 \subsection{Method of computation}
 
-By \cref{eq:pfqode}, hypergeometric functions are D-finite (holonomic), i.e.\ satisfy linear
+By \eqref{eq:pfqode}, hypergeometric functions are D-finite (holonomic), i.e.\ satisfy linear
 ODEs with rational function coefficients.
 There is a theory of ``effective analytic continuation''
 for general D-finite functions~\cite{david1990computer,van2001fast,vdH:hol,Mezzarobba2010,Mezzarobba2011,MezzarobbaSalvy2010}.
@@ -305,7 +285,7 @@ Further, and importantly,
 we provide a complete implementation of the cases $p \le 2, q \le 1$,
 permitting efficient evaluation for any~$z$.
 The significance of order $p \le 2, q \le 1$ is that many
-second-order ODEs that arise in applications can be transformed to this case of~\cref{eq:pfqode}.
+second-order ODEs that arise in applications can be transformed to this case of~\eqref{eq:pfqode}.
 We are able to cover evaluation
 for any~$z$ due to the fact that the expansions of these ${}_pF_q$'s at $z = \infty$
 (and $z = 1$ for~${}_2F_1$) can be expressed as finite linear combinations of other
@@ -512,7 +492,7 @@ are also used.
 
 \label{sect:hypdirsum}
 
-The direct evaluation of ${}_pF_q$ via \cref{eq:pfq}
+The direct evaluation of ${}_pF_q$ via \eqref{eq:pfq}
 involves three tasks: selecting the number of terms $N$,
 computing the truncated sum $S(N) = \sum_{k=0}^{N-1} T(k)$, and
 (unless the series terminates at this point) bounding the error
@@ -548,7 +528,7 @@ without the separate factorial.
 
 \begin{theorem}
 \label{thm:pfqbound}
-With $T(k)$ as in \cref{eq:pfq},
+With $T(k)$ as in \eqref{eq:pfq},
 if $p \le q + 1$ and $\operatorname{Re}(b_i+N) > 0$ for all $b_i$,
 then $\left|\sum_{k=N}^{\infty} T(N)\right| \le C |T(N)|$ where
 \begin{equation*}
@@ -567,7 +547,7 @@ Bounding the tail by a geometric series gives the result.
 \end{proof}
 
 The same principle is used to get tail bounds for
-parameter derivatives of \cref{eq:pfq},
+parameter derivatives of \eqref{eq:pfq},
 i.e.\ bounds for each coefficient in
 $\sum_{k=N}^{\infty} T(k) \in \mathbb{C}[[x]] / \langle x^n \rangle$
 given $a_i, b_i, z \in \mathbb{C}[[x]] / \langle x^n \rangle$.
@@ -750,7 +730,7 @@ but in our experience, it is hard to beat the asymptotic Stirling series
 with argument reduction based on $\Gamma(s+r) = (s)_r \Gamma(s)$
 and $\Gamma(s)\Gamma(1-s) = \pi / \sin(\pi s)$,
 where the error term~$R(N,s)$ is bounded as in~\cite{Olver1997}.
-Conveniently, \cref{eq:stirling} is numerically
+Conveniently, \eqref{eq:stirling} is numerically
 stable for large~$|s|$ and gives the correct branch structure for $\log \Gamma(s)$.
 
 Fast evaluation of the rising factorial $(s)_r = s (s+1) \cdots (s+r-1)$
@@ -774,7 +754,7 @@ for repeated evaluations.
 
 Arb caches Bernoulli numbers, but generating them the first time
 could be time-consuming if not optimized.
-The best method in practice uses the identity
+The best method in practice uses
 $B_{2n} = (-1)^{n+1} 2(2n)! \zeta(2n) (2\pi)^{-2n}$
 together with the von Staudt-Clausen theorem
 to recover exact numerators.
@@ -836,7 +816,6 @@ with the interval arithmetic automatically taking care of error bounds.
 
 \begin{table}
 \begin{center}
-\caption{Implemented variants and derived cases of confluent hypergeometric functions.}
 \begin{tabular}{l l}
 Function & Notation \\ \hline
 Confluent hypergeometric function \rule{0pt}{0.4cm} & ${}_1F_1{}(a;b;z), {}_1{\tilde F}_1{}(a;b;z)$, $U(a,b,z)$ \\
@@ -852,6 +831,7 @@ Trigonometric integrals & $\operatorname{Si}(z)$, $\operatorname{Ci}(z)$, $\oper
 Laguerre function (Laguerre polynomial) & $L^{\mu}_{\nu}(z)$ \\
 Hermite function (Hermite polynomial) & $H_{\nu}(z)$ \\
 \end{tabular}%}
+\caption{Implemented variants and derived cases of confluent hypergeometric functions.}
 \label{tab:specfunconfluent}
 \end{center}
 \end{table}
@@ -869,7 +849,7 @@ where $|\varepsilon_N(a,b,z)| \to 0$ for fixed $N,a,b$ when $|z| \to \infty$.
 The ${}_2F_0$ series is divergent when $N \to \infty$ (unless
 $a$ or $a-b+1 \in \mathbb{Z}_{\le 0}$ so that it reduces to a polynomial),
 but it is natural to \emph{define} the function ${}_2F_0(a,b,z)$
-for all $a,b,z \in \mathbb{C}$ in terms of $U$ via \cref{eq:uasymp2f0}.
+for all $a,b,z \in \mathbb{C}$ in terms of $U$ via \eqref{eq:uasymp2f0}.
 The choice between ${}_2F_0$ and $U$ (or $U^{*}$) is then just a matter of notation.
 It is well known that this definition is equivalent
 to Borel resummation of the ${}_2F_0$ series.
@@ -904,18 +884,18 @@ U(a,b,z)
 \end{equation}
 with the understanding that principal branches are used everywhere and
 $U(a,b,z) = \lim_{\varepsilon \to 0} U(a,b+\varepsilon,z)$
-in \cref{eq:mconnect} when $b \in \mathbb{Z}$.
-Formula \cref{eq:mconnect}, which allows
+in \eqref{eq:mconnect} when $b \in \mathbb{Z}$.
+Formula \eqref{eq:mconnect}, which allows
 computing $U$ when $|z|$ is too small to use the asymptotic series,
 is \cite[13.2.42]{NIST:DLMF}.
-Formula \cref{eq:uconnect}, which in effect gives us the asymptotic
+Formula \eqref{eq:uconnect}, which in effect gives us the asymptotic
 expansion for ${}_1F_1$, can be derived from
 the connection formula between ${}_1F_1$ and $U$
 given in \cite[13.2.41]{NIST:DLMF}.
 The advantage of using $U^{*}$
-and the form~\cref{eq:uconnect} instead of $U$ is that it
+and the form~\eqref{eq:uconnect} instead of $U$ is that it
 behaves continuously in interval arithmetic when $z$ straddles the real axis.
-The discrete jumps that occur in~\cref{eq:uconnect} when crossing
+The discrete jumps that occur in~\eqref{eq:uconnect} when crossing
 branch cuts on the right-hand side
 only contribute by an exponentially small amount:
 when $|z|$ is large enough for the asymptotic expansion to be used,
@@ -938,18 +918,18 @@ Accordingly, to compute either ${}_1F_1$ or $U$, there are four main cases:
 
 \begin{itemize}
 \item For ${}_1F_1$ when $|z| < P \log(2)$, use the ${}_1F_1$ series directly.
-\item For ${}_1F_1$ when $|z| > P \log(2)$, use \cref{eq:uconnect} and evaluate two ${}_2F_0$ series (with error bounds for each).
+\item For ${}_1F_1$ when $|z| > P \log(2)$, use \eqref{eq:uconnect} and evaluate two ${}_2F_0$ series (with error bounds for each).
 \item For $U$ or $U^{*}$ when $|z| > P \log(2)$, use the ${}_2F_0$ series directly.
-\item For $U$ or $U^{*}$ when $|z| < P \log(2)$, use \cref{eq:mconnect} and evaluate two ${}_1F_1$ series.
+\item For $U$ or $U^{*}$ when $|z| < P \log(2)$, use \eqref{eq:mconnect} and evaluate two ${}_1F_1$ series.
 If $b \in \mathbb{Z}$, compute $\lim_{\varepsilon \to 0} U(a,b+\varepsilon,z)$
 by substituting $b \to b+\varepsilon \in \mathbb{C}[[\varepsilon]] / \langle \varepsilon^2 \rangle$
-and evaluating the right hand side of~\cref{eq:mconnect} using power series arithmetic.
+and evaluating the right hand side of~\eqref{eq:mconnect} using power series arithmetic.
 \end{itemize}
 
 The cutoff based on $|z|$ and $P$ is correct asymptotically,
 but somewhat naive since it
 ignores cancellation in the ${}_1F_1$
-series and in the connection formula \cref{eq:mconnect}.
+series and in the connection formula \eqref{eq:mconnect}.
 In the transition region $|z| \sim P$, all significant bits may be lost.
 The algorithm selection can be optimized by estimating the amount of
 cancellation with either formula, and selecting the one that should
@@ -975,7 +955,7 @@ such as \cite{chevillard2013multiple} to reduce cancellation there also.
 Bessel functions are computed via the ${}_0F_1$ series for small $|z|$
 and via $U^{*}$ for large $|z|$.
 The formula ${}_0F_1(b,z^2) = e^{-2z} {}_1F_1(b-\tfrac{1}{2},2b-1,4z)$
-together with \cref{eq:uconnect} gives the asymptotic expansions of
+together with \eqref{eq:uconnect} gives the asymptotic expansions of
 \begin{equation*}
 J_{\nu}(z), I_{\nu}(z) = \frac{1}{\Gamma(\nu+1)} \left(\frac{z}{2}\right)^{\nu}
              {}_0F_1\left(\nu+1, \mp \frac{z^2}{4}\right).
@@ -998,7 +978,7 @@ K_{\nu}(z) = \frac{1}{2} \frac{\pi}{\sin(\pi \nu)} \left[
             \right]
 \end{equation}
 otherwise, with a limit computation when $\nu \in \mathbb{Z}$.
-Note that it would be a mistake to use \cref{eq:besselk} for all $z$,
+Note that it would be a mistake to use \eqref{eq:besselk} for all $z$,
 not only because it requires evaluating four asymptotic series instead of one,
 but because it would lead to exponentially large cancellation when $z \to +\infty$.
 
@@ -1032,7 +1012,6 @@ most importantly for exponential integrals and Bessel functions of small order.
 
 \begin{table}
 \begin{center}
-\caption{Implemented variants and derived cases of the Gauss hypergeometric function.}
 \begin{tabular}{l l}
 Function & Notation \\ \hline
 Hypergeometric function \rule{0pt}{0.4cm} & ${}_2F_1{}(a,b;c;z), {}_2{\tilde F}_1{}(a,b;c;z)$ \\
@@ -1044,6 +1023,7 @@ Spherical harmonics & $Y_n^m(\theta,\varphi)$ \\
 Incomplete beta function & $B(a,b;z), I(a,b;z)$ \\
 Complete elliptic integrals & $K(z), E(z)$ \\
 \end{tabular}%}
+\caption{Implemented variants and derived cases of the Gauss hypergeometric function.}
 \label{tab:specfungauss}
 \end{center}
 \end{table}
@@ -1086,7 +1066,7 @@ For example, the $1/z$ transformation reads
 \end{split}
 \end{align}
 The first step when computing ${}_2F_1$ is to check whether
-the original series is terminating, or whether one of \cref{eq:hyp2f1transf1}
+the original series is terminating, or whether one of \eqref{eq:hyp2f1transf1}
 results in a terminating series.
 Otherwise, we pick the linear fractional transformation among
 \begin{equation*}
@@ -1148,7 +1128,7 @@ $P_0(z) = ab$.
 %P_1(z) &= (a+b+1)(z+z_0) - c \\
 %P_0(z) &= ab.
 %\end{align*}
-It follows from \cref{eq:fdiffeq} that the coefficients
+It follows from \eqref{eq:fdiffeq} that the coefficients
 in the Taylor series $f(z) = \sum_{k=0}^{\infty} f_{[k]} z^k$ satisfy
 the second-order recurrence equation
 \begin{equation}
@@ -1162,7 +1142,7 @@ $R_0(k) = (a+k)(b+k)$.
 
 Knowing $f(0), f'(0)$, we can compute $f(z), f'(z)$ if $z$ is sufficiently small
 and $z_0 \not\in \{0,1\}$,
-thanks to \cref{eq:rrec} and the truncation bound given below.
+thanks to \eqref{eq:rrec} and the truncation bound given below.
 We use the usual ${}_2F_1$ series at the origin, following by
 two analytic continuation steps
 \begin{equation*}
@@ -1190,7 +1170,7 @@ using the Cauchy-Kovalevskaya majorant method,
 following~\cite{van2001fast}.
 
 \begin{theorem}
-If $f(z) = \sum_{k=0}^{\infty} f_{[k]} z^k$ satisfies \cref{eq:fdiffeq} and $z_0 \not \in \{0,1\}$, then
+If $f(z) = \sum_{k=0}^{\infty} f_{[k]} z^k$ satisfies \eqref{eq:fdiffeq} and $z_0 \not \in \{0,1\}$, then
 for all $k \ge 0$,
 $|f_{[k]}| \le A \binom{N+k}{k} \nu^k$
 provided that
@@ -1209,23 +1189,23 @@ Note that
 \frac{1}{P_2(z)} = \frac{1}{z+z_0-1} - \frac{1}{z+z_0} =
 \sum_{k=0}^{\infty} \left(\frac{1}{(z_0-1)^{k+1}} - \frac{1}{z_0^{k+1}}\right) (-z)^k.
 \end{equation*}
-Accordingly, with $M_0, M_1, \nu$ as in \cref{eq:2f1boundnu},
+Accordingly, with $M_0, M_1, \nu$ as in \eqref{eq:2f1boundnu},
 \begin{equation*}
 \left|\left(-\frac{P_i(z)}{P_2(z)}\right)_{[k]}\right| \le M_i \nu^k = \left(\frac{M_i}{1-\nu z}\right)_{[k]},
 \quad i = 0,1.
 \end{equation*}
-In other words, \cref{eq:fdiffeq} is majorized by
+In other words, \eqref{eq:fdiffeq} is majorized by
 $g''(z) = \frac{M_1}{1-\nu z} g'(z) + \frac{M_0}{1-\nu z} g(z).$
-Using \cref{eq:2f1boundN} in turn gives the majorizing differential equation
+Using \eqref{eq:2f1boundN} in turn gives the majorizing differential equation
 \begin{equation}
 h''(z) = \frac{N+1}{2} \left( \frac{\nu}{1-\nu z} \right) h'(z)
 + \frac{(N+1)N}{2} \left( \frac{\nu}{1-\nu z} \right)^2 h(z).
 \label{eq:gdiffeq}
 \end{equation}
 The simple solution $h(z) = A (1-\nu z)^{-N}$
-of \cref{eq:gdiffeq} now provides the bound
+of \eqref{eq:gdiffeq} now provides the bound
 $|f_{[k]}| \le h_{[k]} = A \binom{N+k}{k} \nu^k$
-with $A$ chosen as in \cref{eq:2f1boundA} for the initial values.
+with $A$ chosen as in \eqref{eq:2f1boundA} for the initial values.
 \end{proof}
 
 Note that the bound
@@ -1254,7 +1234,7 @@ cancellation.
 \subsection{Higher orders}
 
 The functions ${}_3F_2$, ${}_4F_3$, etc.\
-have a $1/z$ transformation analogous to \cref{eq:2f1inv}, but no other
+have a $1/z$ transformation analogous to \eqref{eq:2f1inv}, but no other
 such formulas for generic parameters~\cite[16.8]{NIST:DLMF}.
 We could cover $|z| \gg 1$ by evaluating ${}_pF_q$-series directly,
 but other methods are needed on the annulus surrounding the unit circle.
@@ -1335,6 +1315,44 @@ and the Legendre function $Q_a^c(1-2z)$
 with the ${}_2F_1$ inputs (with argument $1-2z$, it is equivalent to a linear
 combination of two ${}_2F_1$'s of argument $z$).
 
+\begin{table}
+\renewcommand{\arraystretch}{1.4}
+\setlength{\tabcolsep}{.4em}
+\begin{center}
+\begin{scriptsize}
+\begin{tabular}{l l | r r | l}
+          & Code & Average & Median   & Accuracy \\
+\hline
+${}_1F_1$ & SciPy         & 2.7 & 0.76         & 18 good, 4 fair, 4 poor, 5 wrong, 2 NaN, 7 skipped\\
+${}_2F_1$ & SciPy         & 24   & 0.56        & 18 good, 1 fair, 1 poor, 3 wrong, 1 NaN, 6 skipped \\
+\hline
+${}_2F_1$ & Michel \& S.  & 7.7  & 2.1 & 22 good, 1 poor, 6 wrong, 1 NaN \\
+\hline
+${}_1F_1$ & MMA (m)       & 1100      &     29 & 34 good, 2 poor, 4 wrong, 2 no significant digits out \\
+${}_2F_1$ & MMA (m)       & 30000     &     72   & 29 good, 1 fair \\
+
+$U$       & MMA (m)       & 4400      & 190   &  28 good, 4 fair, 2 wrong, 6 no significant digits out \\
+$Q$       & MMA (m)       & 4300      &   61  &  21 good, 3 fair, 2 poor, 1 wrong, 3 NaN \\
+\hline
+${}_1F_1$ & MMA (a)       & 2100      & 170   & 39 good, 1 not good as claimed (actual error $2^{-40}$) \\
+${}_2F_1$ & MMA (a)       & 37000     & 540   & 30 good ($2^{-53}$) \\
+$U$       & MMA (a)       & 25000     & 340   & 38 good, 2 not as claimed ($2^{-40}, 2^{-45}$) \\
+$Q$       & MMA (a)       & 8300      & 780   & 28 good, 1 not as claimed ($2^{-25}$), 1 wrong \\
+\hline
+${}_1F_1$ & Arb           &  200      & 32    & 40 good (correct rounding) \\
+${}_2F_1$ & Arb           &  930      & 160   & 30 good (correct rounding) \\
+$U$       & Arb           & 2000      & 93    & 40 good (correct rounding) \\
+$Q$       & Arb           & 3000      & 210   & 30 good ($2^{-53}$) \\
+\end{tabular}
+\end{scriptsize}
+\caption{Time (in microseconds) per function evaluation, averaged over the 30 or 40 inputs, and resulting accuracy.
+MMA is Mathematica, with (m) machine precision and (a) arbitrary-precision arithmetic.
+With SciPy, Michel \& S. and MMA (m), we deem a result with relative error at most $2^{-40}$ good,
+$2^{-20}$ fair, $2^{-1}$ poor, otherwise wrong. With MMA (a), good is $<2^{-50}$.}
+\label{tab:pearson2}
+\end{center}
+\end{table}
+
 With Arb, we measure the time to compute certified correctly rounded 53-bit
 floating-point values, except for the function $Q$ where we compute
 the values to a certified relative error of $2^{-53}$ before
@@ -1365,44 +1383,6 @@ Since some test cases take much longer than others,
 we report both the average and the median time for a function
 evaluation with each implementation.
 
-\begin{table}
-\renewcommand{\arraystretch}{1.4}
-\setlength{\tabcolsep}{.4em}
-\begin{center}
-\caption{Time (in microseconds) per function evaluation, averaged over the 30 or 40 inputs, and resulting accuracy.
-MMA is Mathematica, with (m) machine precision and (a) arbitrary-precision arithmetic.
-With SciPy, Michel \& S. and MMA (m), we deem a result with relative error at most $2^{-40}$ good,
-$2^{-20}$ fair, $2^{-1}$ poor, otherwise wrong. With MMA (a), good is $<2^{-50}$.}
-\begin{scriptsize}
-\begin{tabular}{l l | r r | l}
-          & Code & Average & Median   & Accuracy \\
-\hline
-${}_1F_1$ & SciPy         & 2.7 & 0.76         & 18 good, 4 fair, 4 poor, 5 wrong, 2 NaN, 7 skipped\\
-${}_2F_1$ & SciPy         & 24   & 0.56        & 18 good, 1 fair, 1 poor, 3 wrong, 1 NaN, 6 skipped \\
-\hline
-${}_2F_1$ & Michel \& S.  & 7.7  & 2.1 & 22 good, 1 poor, 6 wrong, 1 NaN \\
-\hline
-${}_1F_1$ & MMA (m)       & 1100      &     29 & 34 good, 2 poor, 4 wrong, 2 no significant digits out \\
-${}_2F_1$ & MMA (m)       & 30000     &     72   & 29 good, 1 fair \\
-
-$U$       & MMA (m)       & 4400      & 190   &  28 good, 4 fair, 2 wrong, 6 no significant digits out \\
-$Q$       & MMA (m)       & 4300      &   61  &  21 good, 3 fair, 2 poor, 1 wrong, 3 NaN \\
-\hline
-${}_1F_1$ & MMA (a)       & 2100      & 170   & 39 good, 1 not good as claimed (actual error $2^{-40}$) \\
-${}_2F_1$ & MMA (a)       & 37000     & 540   & 30 good ($2^{-53}$) \\
-$U$       & MMA (a)       & 25000     & 340   & 38 good, 2 not as claimed ($2^{-40}, 2^{-45}$) \\
-$Q$       & MMA (a)       & 8300      & 780   & 28 good, 1 not as claimed ($2^{-25}$), 1 wrong \\
-\hline
-${}_1F_1$ & Arb           &  200      & 32    & 40 good (correct rounding) \\
-${}_2F_1$ & Arb           &  930      & 160   & 30 good (correct rounding) \\
-$U$       & Arb           & 2000      & 93    & 40 good (correct rounding) \\
-$Q$       & Arb           & 3000      & 210   & 30 good ($2^{-53}$) \\
-\end{tabular}
-\end{scriptsize}
-\label{tab:pearson2}
-\end{center}
-\end{table}
-
 The libraries using pure machine arithmetic are fast, but
 output wrong values in several cases.
 Mathematica with machine-precision input is only slightly more reliable.
@@ -1432,8 +1412,6 @@ and imaginary parts between $\pm 60$, making
 \renewcommand{\arraystretch}{1.1}
 \setlength{\tabcolsep}{.4em}
 \begin{center}
-\caption{Total time (in seconds) to compute the 19\,208 Bessel function values in Kodama's test.
-The good/fair/poor/wrong thresholds are $2^{-40}$ (53-bit) or $2^{-100}$ (113-bit) / $2^{-20}$ / $2^{-1}$.}
 \begin{small}
 %\begin{tabular}{c c c c c}
 %Bits   & Kodama     & Mathematica   & Arb    & Arb (4-in-1)  \\ \hline
@@ -1452,6 +1430,8 @@ Arb (53-bit)       & 10  & 5.1  &  19208 good (correct rounding) \\
 Arb (113-bit)      & 11  & 5.9  &  19208 good (correct rounding) \\
 \end{tabular}
 \end{small}
+\caption{Time (in seconds) to compute the 19\,208 Bessel function values in Kodama's test.
+The good/fair/poor/wrong thresholds are $2^{-40}$ (53-bit) or $2^{-100}$ (113-bit) / $2^{-20}$ / $2^{-1}$.}
 \label{tab:kodama}
 \end{center}
 \end{table}
@@ -1488,14 +1468,27 @@ while the correct value is about $1.65 \cdot 10^{-27} + 2.28 \cdot 10^{-27} i$.
 
 \subsection{High precision}
 
+\Cref{tab:prectimings} shows the time to compute Bessel functions
+for small $\nu$ and $z$,
+varying the precision and the type of the inputs.
+In A, both $\nu$ and $z$ have few bits, and Arb uses BS.
+In B, $\nu$ has few bits but $z$ has full precision, and RS is used.
+In C, both $\nu$ and $z$ have full precision, and FME is used.
+Since much of the time in C is spent computing $\Gamma(\pi+1)$,
+D tests $J_{\pi}(\pi)$ without this factor.
+E and F involve computing the parameter derivatives
+of two ${}_0F_1$ functions with $\mathbb{C}[[x]] / \langle x^2 \rangle$
+arithmetic to produce $K_3(z)$, respectively using BS and RS.
+
+In all cases, complexity-reducing methods give a notable speedup at high precision.
+Only real values are tested; complex numbers (when of similar
+``difficulty'' on the function's domain)
+usually increase running times uniformly by a factor 2--4.
+
 \begin{table}
 \renewcommand{\arraystretch}{1.4}
 \setlength{\tabcolsep}{.4em}
 \begin{center}
-\caption{Time (in microseconds) to compute easy values to
-10, 100, 1000, 10\,000 and 100\,000 digits.
-Note: in case C, Arb takes 360\,s the first time at $10^5$ digits, due to
-precomputing Bernoulli numbers.}
 \begin{scriptsize}
 \begin{tabular}{l | r r r r r | r r r r r}
    &  \multicolumn{5}{|c|}{Mathematica}  &  \multicolumn{5}{|c}{Arb}    \\
@@ -1519,62 +1512,14 @@ F: $K_3(\pi)$ &
 69 & 160 & 2600 & 350\,000 & 52\,000\,000 &
 43 & 170 & 1900 & 67\,000 & 4\,100\,000 \\
 \end{tabular}
+\end{scriptsize}
+\caption{Time (in microseconds) to compute easy values to
+10, 100, 1000, 10\,000 and 100\,000 digits.
+Note: in case C, Arb takes 360\,s the first time at $10^5$ digits, due to
+precomputing Bernoulli numbers.}
 \label{tab:prectimings}
-\end{scriptsize}
 \end{center}
 \end{table}
-
-\Cref{tab:prectimings} shows the time to compute Bessel functions
-for small $\nu$ and $z$,
-varying the precision and the type of the inputs.
-In A, both $\nu$ and $z$ have few bits, and Arb uses BS.
-In B, $\nu$ has few bits but $z$ has full precision, and RS is used.
-In C, both $\nu$ and $z$ have full precision, and FME is used.
-Since much of the time in C is spent computing $\Gamma(\pi+1)$,
-D tests $J_{\pi}(\pi)$ without this factor.
-E and F involve computing the parameter derivatives
-of two ${}_0F_1$ functions with $\mathbb{C}[[x]] / \langle x^2 \rangle$
-arithmetic to produce $K_3(z)$, respectively using BS and RS.
-
-In all cases, complexity-reducing methods give a notable speedup at high precision.
-Only real values are tested; complex numbers (when of similar
-``difficulty'' on the function's domain)
-usually increase running times uniformly by a factor 2--4.
-
-\begin{table}
-\renewcommand{\arraystretch}{1.4}
-\setlength{\tabcolsep}{.4em}
-\begin{center}
-\caption{Time in seconds to evaluate the functions on 61 exponentially spaced points from $\pi$ to $10^6 \pi$.
-In A--D, the function is computed to $N$ digits, $N = 10, 10^2, 10^3, 10^4$.
-In E--G, the function is computed to 10 digits, with $N$ or $Ni$ ($i = \sqrt{-1}$) as a parameter. Here, $\omega = e^{\pi i / 3}$.}
-\begin{scriptsize}
-\begin{tabular}{l | l l l l | l l l l}
-                                  & \multicolumn{4}{|c|}{Mathematica} & \multicolumn{4}{|c}{Arb} \\
-Function $\backslash$ $N$         &  10       & 100       & 1000 & 10000 &  10 & 100 & 1000 & 10000  \\ \hline
-A: $J_0(z)$              &  0.0039   &  0.020    & 3.0     & 4700      &  0.00097   &  0.0064  &  0.12   &  7.7  \\
-B: $I_0(z)$             &   0.0032   &  0.012    & 1.5     & 2000  &  0.00081   &  0.0042  &  0.067  &  3.4  \\
-C: $J_0(\omega z)$      &   0.0099   &  0.072    & 16     & 36000      &  0.0014    &  0.0069  &  0.16   &  11   \\
-D: $K_0(z)$             &   0.0037   &  0.028    & 4.2     &  5900  &  0.0018    &  0.020   &  0.47   &  28   \\
-E: $J_N(z)$            &   0.0038   &  0.0073   & 0.31  &  46  &  0.0010    &  0.0070  &  0.12   &  6.5  \\
-F: $J_{Ni}(z)$         &   0.0089   &  28       & $>10^5$     &   $>10^5$  &  0.0017    &  0.014   &  0.28   &  26   \\
-G: ${}_1F_1(Ni,1+i,\omega z)$     &   0.13     &  15       & 15000     &  $>10^5$   &  0.0085    &  0.057   &  1.4    &  120    \\ \hline
-           &   \multicolumn{4}{|c|}{MPFR} & \multicolumn{4}{|c}{ } \\ \hline
-A: $J_0(z)$   & 0.00057  &  0.0030   &  0.24  &  42 & & & & \\
-E: $J_N(z)$   & 0.00078  &  0.0021   &  0.039 &  2.7 & & & & \\
-\end{tabular}
-\end{scriptsize}
-\label{tab:ultrabenchmark}
-\end{center}
-\end{table}
-
-\begin{figure}[!htb]
-\centering
-\includegraphics[scale=0.59]{timings.eps}
-\caption{Time as a function of $x$ to evaluate $J_0(\pi x)$ to $N$ digits and ${}_1F_1(Ni,1+i,e^{\pi i / 3} \pi x)$ to 10 digits,
-for $N = 10^1, 10^2, 10^3, 10^4$ (from bottom to top).}
-\label{fig:timings}
-\end{figure}
 
 \subsection{Large parameters and argument}
 
@@ -1603,6 +1548,41 @@ Mathematica is slow with large parameters (we get more than a factor $10^5$ spee
 likely because it is conservative about using the asymptotic expansion.
 Since Arb computes a rigorous error bound, the asymptotic expansion
 can safely be used aggressively.
+
+\begin{table}
+\renewcommand{\arraystretch}{1.4}
+\setlength{\tabcolsep}{.4em}
+\begin{center}
+\begin{scriptsize}
+\begin{tabular}{l | l l l l | l l l l}
+                                  & \multicolumn{4}{|c|}{Mathematica} & \multicolumn{4}{|c}{Arb} \\
+Function $\backslash$ $N$         &  10       & 100       & 1000 & 10000 &  10 & 100 & 1000 & 10000  \\ \hline
+A: $J_0(z)$              &  0.0039   &  0.020    & 3.0     & 4700      &  0.00097   &  0.0064  &  0.12   &  7.7  \\
+B: $I_0(z)$             &   0.0032   &  0.012    & 1.5     & 2000  &  0.00081   &  0.0042  &  0.067  &  3.4  \\
+C: $J_0(\omega z)$      &   0.0099   &  0.072    & 16     & 36000      &  0.0014    &  0.0069  &  0.16   &  11   \\
+D: $K_0(z)$             &   0.0037   &  0.028    & 4.2     &  5900  &  0.0018    &  0.020   &  0.47   &  28   \\
+E: $J_N(z)$            &   0.0038   &  0.0073   & 0.31  &  46  &  0.0010    &  0.0070  &  0.12   &  6.5  \\
+F: $J_{Ni}(z)$         &   0.0089   &  28       & $>10^5$     &   $>10^5$  &  0.0017    &  0.014   &  0.28   &  26   \\
+G: ${}_1F_1(Ni,1+i,\omega z)$     &   0.13     &  15       & 15000     &  $>10^5$   &  0.0085    &  0.057   &  1.4    &  120    \\ \hline
+           &   \multicolumn{4}{|c|}{MPFR} & \multicolumn{4}{|c}{ } \\ \hline
+A: $J_0(z)$   & 0.00057  &  0.0030   &  0.24  &  42 & & & & \\
+E: $J_N(z)$   & 0.00078  &  0.0021   &  0.039 &  2.7 & & & & \\
+\end{tabular}
+\end{scriptsize}
+\caption{Time in seconds to evaluate the functions on 61 exponentially spaced points from $\pi$ to $10^6 \pi$.
+In A--D, the function is computed to $N$ digits, $N = 10, 10^2, 10^3, 10^4$.
+In E--G, the function is computed to 10 digits, with $N$ or $Ni$ ($i = \sqrt{-1}$) as a parameter. Here, $\omega = e^{\pi i / 3}$.}
+\label{tab:ultrabenchmark}
+\end{center}
+\end{table}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[scale=0.59]{timings.eps}
+\caption{Time as a function of $x$ to evaluate $J_0(\pi x)$ to $N$ digits and ${}_1F_1(Ni,1+i,e^{\pi i / 3} \pi x)$ to 10 digits,
+for $N = 10^1, 10^2, 10^3, 10^4$ (from bottom to top).}
+\label{fig:timings}
+\end{figure}
 
 \subsection{Airy function zeros}
 
@@ -1633,7 +1613,7 @@ We compute $\partial_{\nu}^n J_{\nu}(z) \vert_{\nu=1,z=\pi}$ to 100 digits,
 showing timings in \cref{tab:paramderiv}.
 Mathematica's \texttt{N[]} scales very poorly.
 We also include timings with Maple 2016 (on the same machine as Mathematica),
-using \texttt{fdiff} which does numerical differentiation.
+using \texttt{fdiff} which implements numerical differentiation.
 This performs better, but the automatic
 differentiation in Arb is far superior.
 In fact, Maple automatically uses parallel computation (8 cores), and its total CPU
@@ -1643,15 +1623,15 @@ time is several times higher than the wall time shown in~\cref{tab:paramderiv}.
 \renewcommand{\arraystretch}{1.1}
 \setlength{\tabcolsep}{.4em}
 \begin{center}
-\caption{Time (in seconds) to compute parameter $n$-th derivatives.}
 \begin{small}
 \begin{tabular}{l | l l l l l l l}
 Code \textbackslash $\;n$      & 1 & 2 & 5 & 10 & 100 & 1000 & 10000  \\ \hline
 Mathematica     & 0.12     & 0.20    & 2600    &         &       &     &        \\
-Maple (8 cores) & 0.024    & 0.039   & 4.3     & 35       & $>1$ h    &     &        \\
+Maple (8 cores) & 0.024    & 0.039   & 4.3     & 35       & $>1$ h   &     &        \\
 Arb             & 0.000088 & 0.00015 & 0.00031 & 0.00058 & 0.017 & 6.6 & 1400
 \end{tabular}
 \end{small}
+\caption{Time (in seconds) to compute parameter $n$-th derivatives.}
 \label{tab:paramderiv}
 \end{center}
 \end{table}

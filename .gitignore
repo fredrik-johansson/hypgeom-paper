@@ -20,6 +20,7 @@
 # *.pdf
 
 arb.pdf
+arb_plain.pdf
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
