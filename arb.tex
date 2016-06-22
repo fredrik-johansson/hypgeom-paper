@@ -1632,8 +1632,8 @@ is exploited.
 We compute $\partial_{\nu}^n J_{\nu}(z) \vert_{\nu=1,z=\pi}$ to 100 digits,
 showing timings in \cref{tab:paramderiv}.
 Mathematica's \texttt{N[]} scales very poorly.
-We also include timings with Maple 16 (on the same machine as Mathematica),
-using \texttt{fdiff} which implements numerical differentiation.
+We also include timings with Maple 2016 (on the same machine as Mathematica),
+using \texttt{fdiff} which does numerical differentiation.
 This performs better, but the automatic
 differentiation in Arb is far superior.
 In fact, Maple automatically uses parallel computation (8 cores), and its total CPU
@@ -1648,7 +1648,7 @@ time is several times higher than the wall time shown in~\cref{tab:paramderiv}.
 \begin{tabular}{l | l l l l l l l}
 Code \textbackslash $\;n$      & 1 & 2 & 5 & 10 & 100 & 1000 & 10000  \\ \hline
 Mathematica     & 0.12     & 0.20    & 2600    &         &       &     &        \\
-Maple (8 cores) & 0.024    & 0.039   & 4.3     & 35       &      &     &        \\
+Maple (8 cores) & 0.024    & 0.039   & 4.3     & 35       & $>1$ h    &     &        \\
 Arb             & 0.000088 & 0.00015 & 0.00031 & 0.00058 & 0.017 & 6.6 & 1400
 \end{tabular}
 \end{small}
