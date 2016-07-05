@@ -1,1 +1,6 @@
 Section 3.1: in the example, 1F1 should be Gamma (incomplete gamma function)
+
+Section 8.5: the timings for Arb in E-G and in Figure 2 are wrong: the timings
+             shown are for computing N digits, not for computing 10 digits
+             as it should be
+

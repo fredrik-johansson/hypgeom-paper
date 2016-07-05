@@ -110,7 +110,7 @@ int main()
 
             for (i = 0; i <= 60; i++)
             {
-                if (fun == 10)
+                if (fun >= 4)
                     goal = 10 * 3.321928094887;
                 else
                     goal = dps * 3.321928094887;
@@ -168,16 +168,8 @@ int main()
                         acb_hypgeom_m(r, a, b, z, 0, prec);
                     }
 
-                    if (fun >= 4)
-                    {
-                        if (acb_rel_accuracy_bits(r) >= 10 * 3.321928094887)
-                            break;
-                    }
-                    else
-                    {
-                        if (acb_rel_accuracy_bits(r) >= goal)
-                            break;
-                    }
+                    if (acb_rel_accuracy_bits(r) >= goal)
+                        break;
                 }
 
                 TIMEIT_STOP_VAL(tt)
